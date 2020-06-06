@@ -15,6 +15,12 @@ spec:
      #annotations:
        #prometheus.io/scrape: "true"
        #prometheus.io/port: "9113"
+      annotations:
+        co.elastic.logs/module: nginx
+        co.elastic.logs/fileset.stdout: access
+        co.elastic.logs/fileset.stderr: error
+        co.elastic.metrics/module: nginx
+        co.elastic.metrics/hosts: '${data.host}:${data.port}'
     spec:
       serviceAccountName: nginx-ingress
       containers:
